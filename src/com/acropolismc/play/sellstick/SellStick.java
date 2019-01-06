@@ -18,7 +18,7 @@ import net.milkbowl.vault.economy.Economy;
 public class SellStick extends JavaPlugin {
 
 	public Essentials ess;
-	private static Economy econ = null;
+	private static Economy econ;
 	private static final Logger log = Logger.getLogger("Minecraft");
 	Plugin factions;
 
@@ -52,8 +52,6 @@ public class SellStick extends JavaPlugin {
 			ess = null;
 			econ = null;
 			factions = null;
-			StickConfig.instance = null;
-			PriceConfig.instance = null;
 		} catch (Exception ex) {
 			log.severe(String.format("[%s] - Was not disabled correctly!", getDescription().getName()));
 		} finally {

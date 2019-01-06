@@ -27,7 +27,7 @@ public class SellStickCommand implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (args.length == 0) {
+	if (args.length == 0) {
 			plugin.msg(sender, ChatColor.GRAY + "" + ChatColor.ITALIC + "Sell Stick by shmkane");
 			if (sender.hasPermission("sellstick.give")) {
 				plugin.msg(sender, ChatColor.GREEN + "/SellStick give <player> <amount> (<uses>/infinite)");

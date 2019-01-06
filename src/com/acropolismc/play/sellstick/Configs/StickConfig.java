@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class StickConfig {
+	
 	public static StickConfig instance = new StickConfig();
 	public File conf;
 
@@ -69,12 +70,12 @@ public class StickConfig {
 	}
 
 	public void setup(File dir) {
+
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
 
 		this.conf = new File(dir + File.separator + "config.yml");
-
 		if (!this.conf.exists()) {
 			FileConfiguration config = YamlConfiguration.loadConfiguration(this.conf);
 

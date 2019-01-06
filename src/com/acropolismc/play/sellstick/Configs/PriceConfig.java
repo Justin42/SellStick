@@ -9,6 +9,7 @@ public class PriceConfig {
 	public File conf;
 
 	public void setup(File dir) {
+
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
