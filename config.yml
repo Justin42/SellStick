@@ -1,7 +1,7 @@
 #############################
 ####Sell Stick by shmkane####
 #############################
-###Plugin Version: 8.1.0.2###
+###Plugin Version: 8.1.1.2###
 #############################
 #######Server Settings#######
 #############################
@@ -47,9 +47,9 @@ ItemType: STICK #ONCE AGAIN, USE THE LINK ABOVE FOR ITEM NAMES
 #
 StickLore:
 - '&c&lLeft&c click on a chest to sell items inside!' #line 1
-#The Finite or Infinite lore will go here.
-- '&cSellStick by &oshmkane' #line 3
-- '&cAsk an admin to customize this!' #line 4
+- '&cSellStick by &oshmkane' #line 2
+- '&cAsk an admin to customize this!' #line 3
+#The Finite or Infinite lore will go here, as defined by 'DurabilityLine : 4' #LINE 4
 #- '&cadd more lines' #line 5
 #- '&aLike this' #line 6
 #
@@ -100,7 +100,7 @@ NoPermissionMessage: '&cSorry, you don''t have permission for this!'
 #
 #
 #If they try using the stick in an invalid territory.
-InvalidTerritoryMessage: '&cYou can''t use sell stick in %claims% &cclaims!'
+InvalidTerritoryMessage: '&cYou can''t use sell stick in plot &c%claims%!'
 # terrotory
 #
 #If the chest chest didnt have anything they could sell

@@ -137,10 +137,8 @@ public class PlayerListener implements Listener {
 	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
 	public void onUse(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
-		// Gets item from Config.
+		
 		Material sellItem = Material.getMaterial(StickConfig.instance.item.toUpperCase());
-		// When they left click with that item, and that item has the same name
-		// as a sellstick
 		if (e.getAction() == Action.LEFT_CLICK_BLOCK) {
 
 			// Leaving this depricated for some backwards compatibility. Anything after
@@ -165,7 +163,7 @@ public class PlayerListener implements Listener {
 							if (!plot.getMembers().contains(p.getUniqueId())
 									&& !plot.getOwners().contains(p.getUniqueId())
 									&& !plot.getTrusted().contains(p.getUniqueId())) {
-								plugin.msg(p, StickConfig.instance.territoryMessage);
+								plugin.msg(p, StickConfig.instance.territoryMessage.replace("%claims%", plot.getId().toString()));
 								e.setCancelled(true);
 								return;
 							}
