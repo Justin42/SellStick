@@ -222,25 +222,14 @@ public class PlayerListener implements Listener {
 							try {
 								if (!StickConfig.instance.useEssentialsWorth || plugin.ess == null
 										|| !plugin.ess.isEnabled()) {
-									for (String key : PriceConfig.instance.getConfig().getConfigurationSection("prices")
+									for (String itemName : PriceConfig.instance.getConfig().getConfigurationSection("prices")
 											.getKeys(false)) {
 
-										int data;
-										String name;
-
-										if (!key.contains(":")) {
-											data = 0;
-											name = key;
-										} else {
-											name = (key.split(":"))[0];
-											data = Integer.parseInt(key.split(":")[1]);
-										}
-
-										if ((contents[i].getType().toString().equalsIgnoreCase(name) || (isNumeric(name)
-												&& contents[i].getType().getId() == Integer.parseInt(name)))
-												&& contents[i].getDurability() == data) {
+										if ((contents[i].getType().toString().equalsIgnoreCase(itemName) || (isNumeric(itemName)
+												&& contents[i].getType().getId() == Integer.parseInt(itemName)))
+												/*&& contents[i].getDurability() == data*/) {
 											price = Double.parseDouble(
-													PriceConfig.instance.getConfig().getString("prices." + key));
+													PriceConfig.instance.getConfig().getString("prices." + itemName));
 
 										}
 									}
