@@ -1,10 +1,16 @@
 package com.acropolismc.play.sellstick;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.acropolismc.play.sellstick.Configs.PriceConfig;
+import com.acropolismc.play.sellstick.Configs.StickConfig;
 
-import org.bukkit.Bukkit;
+import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
+import com.palmergames.bukkit.towny.object.Resident;
+import com.palmergames.bukkit.towny.object.Town;
+import com.palmergames.bukkit.towny.object.TownyUniverse;
+import com.palmergames.bukkit.towny.object.WorldCoord;
+
+import net.milkbowl.vault.economy.EconomyResponse;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,17 +25,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
-import com.acropolismc.play.sellstick.Configs.PriceConfig;
-import com.acropolismc.play.sellstick.Configs.StickConfig;
-import com.palmergames.bukkit.towny.Towny;
-import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
-import com.palmergames.bukkit.towny.object.Resident;
-import com.palmergames.bukkit.towny.object.Town;
-import com.palmergames.bukkit.towny.object.TownBlockOwner;
-import com.palmergames.bukkit.towny.object.TownyUniverse;
-import com.palmergames.bukkit.towny.object.WorldCoord;
-
-import net.milkbowl.vault.economy.EconomyResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerListener implements Listener {
 	private SellStick plugin;
