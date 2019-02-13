@@ -249,7 +249,7 @@ public class PlayerListener implements Listener {
 									}
 								} else {
 									// Essentials Worth
-									price = plugin.ess.getWorth().getPrice(contents[i]).doubleValue();
+									price = plugin.ess.getWorth().getPrice(plugin.ess, contents[i]).doubleValue();
 								}
 
 								int amount = (int) contents[i].getAmount();
