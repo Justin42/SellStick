@@ -19,17 +19,17 @@ public class PriceConfig {
 			/*
 			 * Example config options
 			 */
-			config.set("prices.SULPHUR", 1.02);
-			config.set("prices.RED_ROSE", 0.76);
+			config.set("prices.GUNPOWDER", 1.02);
+			config.set("prices.POPPY", 0.76);
 			config.set("prices.LEATHER", 2.13);
 			config.set("prices.COOKED_BEEF", 0.01);
 			config.set("prices.BONE", 5.00);
-			config.set("prices.1", 0.42);
-			config.set("prices.STONE:2", 0.22);
-			config.set("prices.STONE:3", 0.02);
-			config.set("prices.1:4", 0.01);
-			config.set("prices.1:5", 0.07);
-			config.set("prices.46", 1.08);
+			config.set("prices.STONE", 0.42);
+			config.set("prices.POLISHED_GRANITE", 0.22);
+			config.set("prices.DIORITE", 0.02);
+			config.set("prices.POLISHED_DIORITE", 0.01);
+			config.set("prices.ANDESITE", 0.07);
+			config.set("prices.TNT", 1.08);
 
 			try {
 				config.save(this.conf);
