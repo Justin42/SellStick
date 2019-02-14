@@ -222,12 +222,16 @@ public class PlayerListener implements Listener {
 							try {
 								if (!StickConfig.instance.useEssentialsWorth || plugin.ess == null
 										|| !plugin.ess.isEnabled()) {
+
+									//plugin.msg(p, contents[i].getType().name());
+
+									// Extremely ineffecient, unnecessary loop through map keys.
 									for (String itemName : PriceConfig.instance.getConfig().getConfigurationSection("prices")
 											.getKeys(false)) {
 
-										if ((contents[i].getType().toString().equalsIgnoreCase(itemName) || (isNumeric(itemName)
+										if ((contents[i].getType().name().equalsIgnoreCase(itemName) || (isNumeric(itemName)
 												&& contents[i].getType().getId() == Integer.parseInt(itemName)))
-												/*&& contents[i].getDurability() == data*/) {
+												&& contents[i].getDurability() == contents[i].getType().getMaxDurability()) {
 											price = Double.parseDouble(
 													PriceConfig.instance.getConfig().getString("prices." + itemName));
 
