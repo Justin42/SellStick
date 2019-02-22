@@ -29,6 +29,7 @@ public class StickConfig {
 	public boolean glow;
 
 	public boolean useEssentialsWorth;
+	public boolean useCoreProtect;
 
 	public void loadValues() {
 		FileConfiguration config = YamlConfiguration.loadConfiguration(this.conf);
@@ -52,6 +53,7 @@ public class StickConfig {
 		this.giveMessage = config.getString("GiveMessage").replace("&", "§");
 		this.receiveMessage = config.getString("ReceiveMessage").replace("&", "§");
 		this.useEssentialsWorth = config.getBoolean("UseEssentialsWorth");
+		this.useCoreProtect = config.getBoolean("UseCoreProtect");
 	}
 
 	public void setup(File dir) {
@@ -87,6 +89,7 @@ public class StickConfig {
 			config.set("GiveMessage", "&aYou gave &e%player%& &e&l%amount% &asell sticks!");
 			config.set("ReceiveMessage", "&aYou've received &e&l%amount% &asell sticks!");
 			config.set("UseEssentialsWorth", false);
+			config.set("UseCoreProtect", true);
 
 			try {
 				config.save(this.conf);

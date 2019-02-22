@@ -2,6 +2,8 @@ package com.acropolismc.play.sellstick;
 
 import java.util.logging.Logger;
 
+import net.coreprotect.CoreProtect;
+import net.coreprotect.CoreProtectAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
@@ -18,6 +20,7 @@ import net.milkbowl.vault.economy.Economy;
 public class SellStick extends JavaPlugin {
 
 	public Essentials ess;
+	public CoreProtect coreProtect;
 	private static Economy econ = null;
 	private static final Logger log = Logger.getLogger("Minecraft");
 	Plugin towny;
@@ -41,6 +44,7 @@ public class SellStick extends JavaPlugin {
 		}
 
 		setupEssentials();
+		setupCoreProtect();
 
 		this.getCommand("sellstick").setExecutor(new SellStickCommand(this));
 		this.getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
@@ -74,6 +78,18 @@ public class SellStick extends JavaPlugin {
 			}
 		}
 
+	}
+
+	public void setupCoreProtect() {
+		if (Bukkit.getPluginManager().isPluginEnabled("CoreProtect")) {
+			if(!StickConfig.instance.useCoreProtect) {
+				log.info(String.format("[%s] CoreProtect plugin found, but support disabled in configuration.", getDescription().getName()));
+				log.info(String.format("[%s] Consider setting 'UseCoreProtect: true' to enable logging and rollback of transactions.", getDescription().getName()));
+				return;
+			}
+			log.info(String.format("[%s] Hooked into CoreProtect!", getDescription().getName()));
+			coreProtect = (CoreProtect) Bukkit.getPluginManager().getPlugin("CoreProtect");
+		}
 	}
 
 	public boolean setupTowny() {

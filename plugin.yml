@@ -5,7 +5,7 @@ api-version: 1.13
 author: shmkane
 website: https://github.com/shmkane/SellStick
 depend: [Vault, Towny]
-softdepend: [Essentials]
+softdepend: [Essentials, CoreProtect]
 commands:
    sellstick:
       description: Sell all items in a chest easily!

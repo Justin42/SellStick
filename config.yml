@@ -118,6 +118,11 @@ BrokenStick: '&cYour sellstick broke!(Ran out of uses)'
 UseEssentialsWorth: false
 #
 #
+#Do you want transactions logged with CoreProtect?
+#Has no effect if CoreProtect is not found.
+UseCoreProtect: true
+#
+#
 #The message to send to the Admin who gave the sticks
 GiveMessage: '&aYou gave &e%player% &e&l%amount% &asell sticks!'
 #

@@ -9,6 +9,7 @@ import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownyUniverse;
 import com.palmergames.bukkit.towny.object.WorldCoord;
 
+import net.coreprotect.CoreProtectAPI;
 import net.milkbowl.vault.economy.EconomyResponse;
 
 import org.bukkit.ChatColor;
@@ -219,6 +220,12 @@ public class PlayerListener implements Listener {
 						double multiplier = Double.NEGATIVE_INFINITY;
 
 						for (int i = 0; i < c.getInventory().getSize(); i++) {
+							if (contents[i] == null) continue;
+
+							Material blockType = contents[i].getType();
+							if (blockType == null || blockType == Material.AIR) {
+								continue;
+							}
 							try {
 								if (!StickConfig.instance.useEssentialsWorth || plugin.ess == null
 										|| !plugin.ess.isEnabled()) {
@@ -247,11 +254,22 @@ public class PlayerListener implements Listener {
 								slotPrice = price * amount;
 								if (slotPrice > 0) {
 									ItemStack sell = contents[i];
+									// Log as container withdraw
+									if (StickConfig.instance.useCoreProtect) {
+										if(plugin.coreProtect == null || !plugin.coreProtect.isEnabled()) {
+											System.out.println(("SellStick failed to hook CoreProtect. There will be no CoreProtect log of items removed from chest."));
+										}
+										else {
+											System.out.println("SellStick logging container transaction via CoreProtect.");
+											plugin.coreProtect.getAPI().logContainerTransaction(p.getName(), location);
+										}
+									}
 									c.getInventory().remove(sell);
 									e.getClickedBlock().getState().update();
 								}
 
 							} catch (NullPointerException ex) {
+								ex.printStackTrace();
 							}
 
 							total += slotPrice;
