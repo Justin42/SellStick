@@ -30,6 +30,7 @@ public class StickConfig {
 
 	public boolean useEssentialsWorth;
 	public boolean useCoreProtect;
+	public boolean logItems;
 
 	public void loadValues() {
 		FileConfiguration config = YamlConfiguration.loadConfiguration(this.conf);
@@ -54,6 +55,7 @@ public class StickConfig {
 		this.receiveMessage = config.getString("ReceiveMessage").replace("&", "§");
 		this.useEssentialsWorth = config.getBoolean("UseEssentialsWorth");
 		this.useCoreProtect = config.getBoolean("UseCoreProtect");
+		this.logItems = config.getBoolean("LogItems");
 	}
 
 	public void setup(File dir) {
@@ -90,6 +92,7 @@ public class StickConfig {
 			config.set("ReceiveMessage", "&aYou've received &e&l%amount% &asell sticks!");
 			config.set("UseEssentialsWorth", false);
 			config.set("UseCoreProtect", true);
+			config.set("LogItems", true);
 
 			try {
 				config.save(this.conf);

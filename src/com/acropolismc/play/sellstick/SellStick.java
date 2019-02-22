@@ -84,7 +84,8 @@ public class SellStick extends JavaPlugin {
 		if (Bukkit.getPluginManager().isPluginEnabled("CoreProtect")) {
 			if(!StickConfig.instance.useCoreProtect) {
 				log.info(String.format("[%s] CoreProtect plugin found, but support disabled in configuration.", getDescription().getName()));
-				log.info(String.format("[%s] Consider setting 'UseCoreProtect: true' to enable logging and rollback of transactions.", getDescription().getName()));
+				log.info(String.format("[%s] Consider setting 'UseCoreProtect: true' to enable CoreProtect support.", getDescription().getName()));
+				log.info(String.format("[%s] Items being removed from containers will not be logged!", getDescription().getName()));
 				return;
 			}
 			log.info(String.format("[%s] Hooked into CoreProtect!", getDescription().getName()));

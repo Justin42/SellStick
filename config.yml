@@ -123,6 +123,11 @@ UseEssentialsWorth: false
 UseCoreProtect: true
 #
 #
+#Log item names and quantity to console
+#Otherwise only player and total is logged.
+LogItems: true
+#
+#
 #The message to send to the Admin who gave the sticks
 GiveMessage: '&aYou gave &e%player% &e&l%amount% &asell sticks!'
 #

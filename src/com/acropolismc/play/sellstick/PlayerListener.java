@@ -219,6 +219,9 @@ public class PlayerListener implements Listener {
 						double price = 0;
 						double multiplier = Double.NEGATIVE_INFINITY;
 
+
+						StringBuilder logItemsMsg = StickConfig.instance.logItems ? new StringBuilder(500) : null;
+
 						for (int i = 0; i < c.getInventory().getSize(); i++) {
 							if (contents[i] == null) continue;
 
@@ -260,9 +263,12 @@ public class PlayerListener implements Listener {
 											System.out.println(("SellStick failed to hook CoreProtect. There will be no CoreProtect log of items removed from chest."));
 										}
 										else {
-											System.out.println("SellStick logging container transaction via CoreProtect.");
+											//System.out.println("SellStick logging container transaction via CoreProtect.");
 											plugin.coreProtect.getAPI().logContainerTransaction(p.getName(), location);
 										}
+									}
+									if (logItemsMsg != null) {
+										logItemsMsg.append(String.format("%sx%d(+%.2f), ", sell.getType().name(), sell.getAmount(), slotPrice));
 									}
 									c.getInventory().remove(sell);
 									e.getClickedBlock().getState().update();
@@ -327,9 +333,18 @@ public class PlayerListener implements Listener {
 													.replace("%balance%", plugin.getEcon().format(r.balance))
 													.replace("%price%", plugin.getEcon().format(r.amount)));
 								}
-
-								System.out.println(p.getName() + " sold items via sellstick for " + r.amount
-										+ " and now has " + r.balance);
+								// TODO This can be specified as format in config.
+								if(logItemsMsg != null) {
+									System.out.println(String.format("[%s] %s(%s) sold items\n	from chest at %s %.2fx, %.2fy, %.2fz:\n%s\n	for %.2f and now has %.2f",
+											plugin.getDescription().getName(), p.getName(), p.getUniqueId(),
+											location.getWorld().getName(), location.getX(), location.getY(), location.getZ(),
+											logItemsMsg.toString(),
+											r.amount, r.balance));
+								}
+								else {
+									System.out.println("[SellStick]" + p.getName() + " sold items for " + r.amount
+											+ " and now has " + r.balance);
+								}
 							} else {
 								plugin.msg(p, String.format("An error occured: %s", r.errorMessage));
 							}
