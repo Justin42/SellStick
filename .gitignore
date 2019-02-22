@@ -3,3 +3,5 @@
 *.class
 /bin/
 *.classpath
+.idea/
+*.iml
